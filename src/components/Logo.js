@@ -1,22 +1,14 @@
-import {gsap} from 'gsap';
 import React, { useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom';
 import styled from 'styled-components'
+import { AnimateLogo } from './Animate';
 
 const Logo = ({loading}) => {
 
     const logo = useRef(null);
 
     useEffect(() => {
-        gsap.fromTo(logo.current, {
-            yPercent: -100,
-            autoAlpha: 0,
-        }, {
-            yPercent: 0,
-            autoAlpha: 1,
-            ease: "power2.inOut",
-            duration: 1.5,
-        })
+        AnimateLogo(logo.current);
     }, [loading])
     return (
         <StyledLogo to="/">

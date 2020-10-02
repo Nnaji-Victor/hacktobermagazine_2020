@@ -24,7 +24,7 @@ const App = () => {
             <StyledHome>
                 <Banner />
                 <Logo loading={loading}/>
-                <GridWrap />
+                <GridWrap loading={loading}/>
             </StyledHome>
         )}
        </>
