@@ -1,5 +1,4 @@
-import gsap from "gsap"
-import { left } from "inquirer/lib/utils/readline";
+import gsap from "gsap";
 
 export const AnimateLogo = (elem) => {
     gsap.fromTo(elem, {
@@ -62,3 +61,33 @@ export const AnimateImages = (item, inner, image, title, subtitle) => {
     .fromTo(item, {autoAlpha: 0, scaleX: 0}, 
         { autoAlpha: 1, scaleX: 1, ease: "ease.in", duration: 0.5}, "imageStart+=0.5")
 }
+
+export const AnimateMouseEnter = (type, el, domLetters) => {
+    const bg = el.querySelector(".grid__item-bg");
+
+    gsap.to(bg, {
+        duration: 1,
+        ease: "expo.out",
+		scale: type === 'mouseenter' ? 1.15 : 1
+    })
+
+    Array.from(domLetters).forEach((letter, pos) => {
+        gsap.to(letter, {
+            duration: .2,
+            ease: "ease.in",
+            delay: pos * .1,
+            y: type === 'mouseenter' ? '-50%' : '50%',
+            opacity: 0,
+            onComplete: () => {
+                gsap.to(letter, {
+                    duration: type === 'mouseenter' ? 0.6 : 1,
+                    ease: type === 'mouseenter' ? "expo.out" : "elastic.out(1, 0.4)",
+                    startAt: {y: type === 'mouseenter' ? '70%' : '-70%', opacity: 0},
+                    y: '0%',
+                    opacity: 1
+                })
+            }
+        })
+    })
+}
+
