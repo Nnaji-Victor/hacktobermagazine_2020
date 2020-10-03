@@ -1,9 +1,11 @@
-import React, {useEffect, useRef} from 'react'
+import React, {useEffect, useRef, useState} from 'react'
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import { AnimateImages } from './Animate';
+import charming from "charming"
+import { AnimateImages, AnimateMouseEnter } from './Animate';
 
 const GridItem = ({image, title, number, loading}) => {
+    const [letterNumber, setletterNumber] = useState(null)
 
     const grid_item = useRef(null);
     const grid__inner = useRef(null);
@@ -16,12 +18,33 @@ const GridItem = ({image, title, number, loading}) => {
             grid__inner.current, 
             grid__image.current, 
             grid__title.current, 
-            grid__title_2.current)
+            grid__title_2.current);
+
+      const number = grid__title_2.current;
+      charming(number);
+      const domLetters = number.querySelectorAll('span');
+      setletterNumber(domLetters);
     }, [loading])
 
+    function mouseEnterFn(el){
+      toggleAnimationOnHover(el.type, el.currentTarget);
+    }
+
+    function mouseLeaveFn(el){
+      toggleAnimationOnHover(el.type, el.currentTarget);
+    }
+
+  
+    function toggleAnimationOnHover(type, elem){
+      AnimateMouseEnter(type, elem, letterNumber)
+    }
+
     return (
-        <StyledGridItem mouseEnter={() => console.log("entered")}>
-            <Link to="#" href="#" className="grid__item">
+        <StyledGridItem>
+            <Link to="#" href="#" className="grid__item" 
+                onMouseEnter={(el) => mouseEnterFn(el)}
+                onMouseLeave = {(el) => mouseLeaveFn(el)}
+                >
                 <div className="grid__item-bg" ref={grid_item}></div>
                 <div className="grid__item-wrap" ref={grid__inner}>
                     <div className="js-transition-img__inner" ref={grid__image}>
