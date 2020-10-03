@@ -25,7 +25,7 @@
     "yup": "^0.27.0"
   },
   "scripts": {
-    "start": "react-scripts start & start-storybook -p 6006",
+    "start": "react-scripts start -p 6006",
     "build": "react-scripts build",
     "build:prod": "GENERATE_SOURCEMAP=false react-scripts build",
     "test": "react-scripts test",
@@ -50,16 +50,6 @@
   },
   "devDependencies": {
     "@babel/core": "^7.7.4",
-    "@storybook/addon-a11y": "^5.2.8",
-    "@storybook/addon-actions": "^5.2.8",
-    "@storybook/addon-console": "^1.2.1",
-    "@storybook/addon-docs": "^5.2.8",
-    "@storybook/addon-knobs": "^5.2.8",
-    "@storybook/addon-links": "^5.2.8",
-    "@storybook/addon-storysource": "^5.2.8",
-    "@storybook/addon-viewport": "^5.2.8",
-    "@storybook/addons": "^5.2.8",
-    "@storybook/react": "^5.2.8",
     "@testing-library/react": "^9.3.2",
     "babel-loader": "^8.0.6",
     "jest": "24.8.0",
