@@ -20,7 +20,7 @@ const GridItem = ({image, title, number, loading}) => {
     }, [loading])
 
     return (
-        <StyledGridItem>
+        <StyledGridItem mouseEnter={() => console.log("entered")}>
             <Link to="#" href="#" className="grid__item">
                 <div className="grid__item-bg" ref={grid_item}></div>
                 <div className="grid__item-wrap" ref={grid__inner}>
